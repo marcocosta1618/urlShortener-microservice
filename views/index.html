@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+   <title>URL shortener</title>
+</head>
+
+<body>
+   <div class="content">
+      <h1>URL Shortener Microservice</h1>
+      <p>Enter a valid URL to get a shorthand for it.</p>
+      <form action="/api/shorturl" method="POST">
+         <fieldset>
+            <legend>URL shortener</legend>
+            <label>
+               Enter a valid URL:
+               <input type="text" name="url" placeholder="www.wikipedia.com">
+            </label>
+            <input type="submit" value="Save URL">
+         </fieldset>
+      </form>
+      <h2>Usage example:</h2>
+   </div>
+   <footer>
+      <p>Marco Costa 2022. Made with <a target="_blank" href="https://expressjs.com/" rel="noreferrer">Expressjs</a>. <a
+            target="_blank" href="https://icons8.com/icon/43988/code" rel="noreferrer">Code</a> icon by <a
+            target="_blank" href="https://icons8.com" rel="noreferrer">Icons8</a></p>
+   </footer>
+</body>
+
+</html>

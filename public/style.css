@@ -11,7 +11,7 @@ html, body {
 body {
    display: flex;
    flex-direction: column;
-   font-family: 'Open Sans', sans-serif;
+   font-family: sans-serif;
    background-color: #f3f3f3;
 }
 
@@ -37,6 +37,9 @@ p {
    margin: 0 1.2rem;
    line-height: 200%;
 }
+span {
+   font-weight: bold;
+}
 
 form {
    margin: 1.2rem;
@@ -45,23 +48,17 @@ fieldset {
    padding: 1rem;
    border-radius: 5px;
 }
-/* ul {
-   display: block;
-   list-style-type: disc;
-   margin: 1rem 2rem;
+input {
+   margin: 0.5rem 0;
+   padding: 0 0.5rem;
 }
-
-li {
-   margin: 0.5rem 0 0 1.5rem;
-} */
+input[type='text'] {
+   width: 12rem;
+}
 
 code {
    font-family: 'Fira Mono', monospace;
    background-color: lightsteelblue;
-}
-
-span {
-   background-color: #b2eeb2;
 }
 
 footer {

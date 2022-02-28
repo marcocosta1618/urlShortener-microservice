@@ -12,7 +12,6 @@ app.use(express.static(__dirname + '/public'))
 
 // enable cors, for fCC remote testing
 const cors = require('cors')
-// const res = require('express/lib/response') ??
 app.use(cors({ optionsSuccessStatus: 200 }))
 
 // connect to MongoDB
@@ -20,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true })
 
 // initial page
 app.use('/', routes)
-// requests at [url]/api
+// requests at [project_url]/api
 app.use('/api', routes)
 
 // port listener

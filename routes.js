@@ -19,38 +19,37 @@ router.get('/', (req, res) => {
 })
 
 // GET requests at api/shorturl/[shorturl]
-router.get('/shorturl/:short?', (req, res) => {
-   const shortUrl = req.params.short
+router.get('/shorturl/:shortUrl?', (req, res) => {
+   const { shortUrl } = req.params
    findShortUrl(urlShortner, shortUrl, (err, document) => {
-      if (err) return console.log(err)
+      if (err) throw new Error(err)
       if (document) return res.redirect(document.original_url)
-      res.send(`no document found with short_url: ${shortUrl}`)
+      res.status(404).send(`404: no document found with short_url: ${shortUrl}`)
    })
 })
 
 // POST requests to api/shorturl
 router.post("/shorturl", (req, res) => {
-   const inputUrl = req.body.url;
+   const { userUrl } = req.body;
    // check url validity
-   if (!testUrl(inputUrl)) {
+   if (!testUrl(userUrl)) {
      // not valid, return res.json
-     console.log('invalid url')
-     return res.json({ error: 'invalid url' })
+     return res.status(400).json({ error: 'invalid url' })
    }
    // valid, check if url is an entry in db
-   findOrigUrl(urlShortner, inputUrl, (err, document) => {
-      if (err) return console.log(err)
+   findOrigUrl(urlShortner, userUrl, (err, document) => {
+      if (err) throw new Error(err)
       // url matches with an entry in database, res.json with url data
       if (document) {
          console.log(`${document.original_url} is already in database with short_url: ${document.short_url}`)
-         return res.json(makeJson(inputUrl, document.short_url))
+         return res.json(makeJson(userUrl, document.short_url))
       }
       // no match, create and save new document, then res.json
       docsCount(urlShortner, (err, count) => {
-         if (err) return console.log(err)
-         new urlShortner(makeJson(inputUrl, count +1)).save((err) => {
-            if (err) return console.log(`could not save document: ${err}`)
-            res.json(makeJson(inputUrl, count +1))
+         if (err) throw new Error(err)
+         new urlShortner(makeJson(userUrl, count +1)).save((err) => {
+            if (err) throw new Error(`could not save document: ${err}`)
+            res.json(makeJson(userUrl, count +1))
          })
       })
    })

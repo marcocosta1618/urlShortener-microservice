@@ -11,7 +11,7 @@ const docsCount = require('./helperFunctions/dbFunctions').docsCount
 const clearAll = require('./helperFunctions/dbFunctions').clearAll
 
 // body-parser for POST requests at '/api/shorturl'
-router.use('/shorturl', bodyParser.urlencoded({ extended: false }))
+router.use('/api/shorturl', bodyParser.urlencoded({ extended: false }))
 
 // GET requests at root
 router.get('/', (req, res) => {
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 })
 
 // GET requests at api/shorturl/[shorturl]
-router.get('/shorturl/:shortUrl?', (req, res) => {
+router.get('/api/shorturl/:shortUrl?', (req, res) => {
    const { shortUrl } = req.params
    findShortUrl(urlShortner, shortUrl, (err, document) => {
       if (err) throw new Error(err)
@@ -29,7 +29,7 @@ router.get('/shorturl/:shortUrl?', (req, res) => {
 })
 
 // POST requests to api/shorturl
-router.post("/shorturl", (req, res) => {
+router.post("/api/shorturl", (req, res) => {
    const { userUrl } = req.body;
    // check url validity
    if (!testUrl(userUrl)) {

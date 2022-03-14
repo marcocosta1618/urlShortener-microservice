@@ -11,7 +11,7 @@ html, body {
 body {
    display: flex;
    flex-direction: column;
-   font-family: sans-serif;
+   font-family: 'Open Sans', sans-serif;
    background-color: #f3f3f3;
 }
 
@@ -21,20 +21,22 @@ body {
 
 h1 {
    padding: 0.5em;
-   margin: 1rem 1rem 2rem;
+   margin: 1.8vh 2vw 2vh;
    text-align: center;
+   font-size: calc(15px + 2vmin);
    border-radius: 3px;
    background-color: lightgreen;
 }
 h2 {
    padding: 0.65em;
-   margin: 3rem 1rem 2rem;
+   margin: 6vh 2vw 2vh;
+   font-size: calc(10px + 2vmin);
    border-radius: 3px;
    background-color: lightgreen;
 }
 
 p {
-   margin: 0 1.2rem;
+   margin: 0 2vw;
    line-height: 200%;
 }
 span {
@@ -45,7 +47,10 @@ form {
    margin: 1.2rem;
 }
 fieldset {
+   width: 80%;
+   margin: 1.8vh auto 2vh;
    padding: 1rem;
+   font-size: 0.9rem;
    border-radius: 5px;
 }
 input {
